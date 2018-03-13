@@ -14,6 +14,7 @@ import co.com.call.center.controller.LlamadaController;
 import co.com.call.center.dto.ClienteDTO;
 import co.com.call.center.dto.EmpleadoDTO;
 import co.com.call.center.utils.Constantes;
+import co.com.call.center.utils.EstadoEmpleado;
 import co.com.call.center.utils.OpcionServicio;
 
 /**
@@ -63,8 +64,11 @@ public class callCenterDispatcher<E> {
 			long pingLlamada = llamadaCt.getNumeroPing();
 			EmpleadoDTO empleadoDTO = empleadoCt.obtenerEmpleado();
 			if (empleadoDTO != null) {
+				empleadoDTO.setEstado(EstadoEmpleado.OCUPADO);
+				empleadoCt.actualizarEstado(empleadoDTO);
 				Runnable call = new Llamada(pingLlamada, cleinteDTO, empleadoDTO);
-				call.run();
+				ejecutar.execute(call);
+				
 			}
 			else if (cleinteDTO.getOpcion().toString().equals(OpcionServicio.ESPERA.toString())) {
 				System.out.println("No hay empleados disponibles para procesar la llamada #= " + pingLlamada + " -customer = "

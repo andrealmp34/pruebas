@@ -69,7 +69,7 @@ public class MainController<E> {
 		callCenter.addEmployeeToShift(o9);
 		callCenter.addEmployeeToShift(s2);
 		// Create a main controller
-		callCenterDispatcherTest<EmpleadoDTO> mainController = new callCenterDispatcherTest<EmpleadoDTO>(callCenter);
+		MainController<EmpleadoDTO> mainController = new MainController<EmpleadoDTO>(callCenter);
 		// create customers
 		ClienteDTO c1 = new ClienteDTO("Claude",new BigInteger("3003128160"),new BigInteger("1022350790"),OpcionServicio.DEVLLAMADA);
 		ClienteDTO c2 = new ClienteDTO("John", new BigInteger("3003128161"),new BigInteger("1022350791"),OpcionServicio.DEVLLAMADA);
@@ -103,7 +103,6 @@ public class MainController<E> {
 
 	}
 
-	@Test
 	public callCenterDispatcher<E> getDispatcher() {
 		return dispatcher;
 	}

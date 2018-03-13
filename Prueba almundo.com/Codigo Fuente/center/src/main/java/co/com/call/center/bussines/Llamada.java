@@ -48,7 +48,7 @@ public class Llamada implements Runnable {
 
 		llamadaCt = new LlamadaController();
 		empleadoCt = new EmpleadoController();
-		int duracionLlamada = getRandomDuration(5, 11) * 1000;
+		int duracionLlamada = getRandomDuration(5, 11) * 5000;
 		System.out.println("LLamada en curso #" + id + " -Duracion= " + duracionLlamada + " -Tiempo = " + LocalDateTime.now()
 				+ " -Cliente= " + clienteDTO.getNombre() + " -Empleado = " + empleadoDto.getNombre());
 		try {
@@ -56,9 +56,7 @@ public class Llamada implements Runnable {
 			// se registra la llamada atendida
 			llamadaCt.registrarLlamada(clienteDTO, id);
 			// se actuliza el emepleado que esta atendiendo la llamada
-			empleadoDto.setEstado(EstadoEmpleado.OCUPADO);
-			empleadoCt.actualizarEstado(empleadoDto);
-
+			
 			Thread.sleep(duracionLlamada);
 			System.out.println("Ended #" + id + " -EndTime= " + LocalDateTime.now());
 			// se termina la llamada y se libera el empleado
