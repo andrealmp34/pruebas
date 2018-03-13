@@ -55,7 +55,7 @@ public class Llamada implements Runnable {
 
 			// se registra la llamada atendida
 			llamadaCt.registrarLlamada(clienteDTO, id);
-			// se actuliza el emepleado que esta atendiendo la llamada
+			
 			
 			Thread.sleep(duracionLlamada);
 			System.out.println("Ended #" + id + " -EndTime= " + LocalDateTime.now());
