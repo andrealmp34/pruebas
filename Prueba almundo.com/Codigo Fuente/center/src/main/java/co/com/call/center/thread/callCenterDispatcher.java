@@ -64,6 +64,7 @@ public class callCenterDispatcher<E> {
 			long pingLlamada = llamadaCt.getNumeroPing();
 			EmpleadoDTO empleadoDTO = empleadoCt.obtenerEmpleado();
 			if (empleadoDTO != null) {
+				//se actualiza el empleado 
 				empleadoDTO.setEstado(EstadoEmpleado.OCUPADO);
 				empleadoCt.actualizarEstado(empleadoDTO);
 				Runnable call = new Llamada(pingLlamada, cleinteDTO, empleadoDTO);
